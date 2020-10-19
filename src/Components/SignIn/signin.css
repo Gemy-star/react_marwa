@@ -1,0 +1,35 @@
+/* .sign-in{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+   
+    width: 50vw;
+    height: 80%;
+} */
+
+/* .makeStyles-paper-3{
+    align-items: center;
+    height: 20%;
+
+} */
+.forminside
+{
+    display: flex !important;
+    justify-content: center !important;
+    height: 100% !important;
+    width: 30% !important;
+}
+/* .MuiPaper-root
+{
+    display: flex !important;
+    justify-content: center !important;
+    position: absolute !important;
+} */
+.MuiGrid-grid-md-3{
+    margin-left: 620px !important;
+    height: 60% !important;
+    margin-top: 150px !important;
+}
