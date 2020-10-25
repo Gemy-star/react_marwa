@@ -2,6 +2,7 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
+import {CrudData} from "../../Data/Data";
 
 const ReturnTypeGrid = (props) => {
     debugger
@@ -34,7 +35,7 @@ const ReturnTypeGrid = (props) => {
                         setTimeout(() => {
                             axios({
                                 method: 'post',
-                                url:'http://172.16.1.102:6060/api/v1/crud',
+                                url:CrudData,
                                 data:{
                                     fun_name:"PRO_INSERT_DOC_PARAM_RET_TYPES",
                                     param_name:['P_NAME'],
@@ -61,7 +62,7 @@ const ReturnTypeGrid = (props) => {
                             // console.log(newData.MOD_NAME,oldData.proj_id,newData.MODULE_DESC,oldData.MOD_ID);
                             axios({
                                 method: 'post',
-                                url:'http://172.16.1.102:6060/api/v1/crud',
+                                url:CrudData,
                                 data:{
                                     fun_name:"PRO_UPDATE_DOC_PARAM_RET_TYPES",
                                     param_name:["P_ID" , 'P_NAME'],
@@ -73,7 +74,7 @@ const ReturnTypeGrid = (props) => {
 
                                 })
                                 .catch(error => console.error('timeout exceeded'))
-//                            window.location.reload(true)
+                            window.location.reload(true)
                             resolve();
                             if (oldData) {
                                 setState((prevState) => {
@@ -89,7 +90,7 @@ const ReturnTypeGrid = (props) => {
                         setTimeout(() => {
                             axios({
                                 method: 'post',
-                                url:'http://172.16.1.102:6060/api/v1/crud',
+                                url:CrudData,
                                 data:{
                                     fun_name:"PRO_DELETE_DOC_PARAM_RET_TYPES",
                                     param_name:['P_ID'],
@@ -102,7 +103,7 @@ const ReturnTypeGrid = (props) => {
                                 })
                                 .catch(error => console.error('timeout exceeded'))
                             //marwa : to refresh the page "
-                            //window.location.reload(true)
+                            window.location.reload(true)
                             resolve();
 
                             setState((prevState) => {

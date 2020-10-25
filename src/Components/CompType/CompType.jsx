@@ -1,41 +1,25 @@
-
-
 import React from 'react';
 import MaterialTable from 'material-table';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
-import PathComponent from "../PathComponent/PathComponent";
-import ChromeReaderMode from '@material-ui/icons/ChromeReaderMode';
 import {CrudData} from "../../Data/Data";
 
-
-const CRUDGrid = (props) => {
+const CompType = (props) => {
+    debugger
     const [state, setState] = React.useState({
         columns: props.columns,
         data: props.data,
         title : props.title
     });
 
-    const  path = [{PathName: "Application", value:sessionStorage.getItem("APP_Name")},{PathName: "Project", value:sessionStorage.getItem("PROJ_NAME")}]
     return (
-<div>
-    <PathComponent Path={path}/>
+
 
         <MaterialTable
             title= {props.title}
             columns={props.columns}
             data={props.data}
-            actions={[
-                {
-                    icon: ChromeReaderMode,
-                    tooltip: 'show details',
-                    onClick: (event, rowData) => {
-                        let state =  {id:rowData.MOD_ID , name:rowData.MOD_NAME}
-                        props.history.push('/screens',state);
-                        sessionStorage.setItem("ModuleId",state.id);
-                        sessionStorage.setItem("ModuleName",state.name);
-                    }
-                },]}
+
             editable={{
                 onRowAdd: (newData) =>
                     new Promise((resolve) => {
@@ -44,9 +28,9 @@ const CRUDGrid = (props) => {
                                 method: 'post',
                                 url:CrudData,
                                 data:{
-                                    fun_name:"PRO_INSERT_DOC_MODULES",
-                                    param_name:["P_MOD_NAME" , 'P_PROJ_ID','P_MODULE_DESC'],
-                                    param_value:[newData.MOD_NAME,props.proj_id,newData.MODULE_DESC]
+                                    fun_name:"PRO_INSERT_DOC_COMPONENT_TYPES",
+                                    param_name:['P_COMP_TYPE_NAME'],
+                                    param_value:[newData.COMP_TYPE_NAME]
                                 }
                             })
                                 .then(response => {
@@ -66,14 +50,14 @@ const CRUDGrid = (props) => {
                 onRowUpdate: (newData, oldData) =>
                     new Promise((resolve) => {
                         setTimeout(() => {
-                            console.log(newData.MOD_NAME,oldData.proj_id,newData.MODULE_DESC,oldData.MOD_ID);
+                            // console.log(newData.MOD_NAME,oldData.proj_id,newData.MODULE_DESC,oldData.MOD_ID);
                             axios({
                                 method: 'post',
                                 url:CrudData,
                                 data:{
-                                    fun_name:"PRO_UPDATE_DOC_MODULES",
-                                    param_name:["P_MOD_NAME" , 'P_PROJ_ID','P_MODULE_DESC' , 'P_MOD_ID'],
-                                    param_value:[newData.MOD_NAME,oldData.PROJ_ID,newData.MODULE_DESC,oldData.MOD_ID]
+                                    fun_name:"PRO_UPDATE_DOC_COMPONENT_TYPES",
+                                    param_name:["P_COMP_TYPE_ID" , 'P_COMP_TYPE_NAME'],
+                                    param_value:[newData.COMP_TYPE_ID,newData.COMP_TYPE_NAME]
                                 }
                             })
                                 .then(response => {
@@ -99,9 +83,9 @@ const CRUDGrid = (props) => {
                                 method: 'post',
                                 url:CrudData,
                                 data:{
-                                    fun_name:"PRO_DELETE_DOC_MODULES",
-                                    param_name:['P_MOD_ID'],
-                                    param_value:[oldData.MOD_ID]
+                                    fun_name:"PRO_DELETE_DOC_COMPONENT_TYPES",
+                                    param_name:['P_COMP_TYPE_ID'],
+                                    param_value:[oldData.COMP_TYPE_ID]
                                 }
                             })
                                 .then(response => {
@@ -122,10 +106,6 @@ const CRUDGrid = (props) => {
                     }),
             }}
         />
-</div>
     );
 }
-export default withRouter(CRUDGrid);
-
-
-
+export default withRouter(CompType);

@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import AddForm from '../form/form';
-
+import AddForm from '../AddForm/form';
+import { useAlert } from 'react-alert';
 
 function rand() {
   return Math.round(Math.random() * 30) - 20;
@@ -34,12 +34,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AddModal(props) {
 
+
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
+
     setOpen(true);
   };
 
@@ -48,7 +50,7 @@ export default function AddModal(props) {
   };
 
   const body = (
-    <AddForm currentPage={props.currentPage}/>
+    <AddForm currentPage={props.currentPage} handleclose={handleClose}/>
     );
 
   return (

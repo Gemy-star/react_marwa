@@ -8,6 +8,7 @@ import { withRouter } from "react-router-dom";
 import { Button } from '@material-ui/core';
 import pagefor from '../../Components/pagefor/pagefor';
 import MenuAppBar from '../../Components/AppBar/AppBar'
+import {CrudData, getData} from "../../Data/Data";
 
 
 class Landing extends Component {
@@ -15,8 +16,8 @@ class Landing extends Component {
       console.log(props);
         super(props);
         this.state = {
-          crudURL :"http://172.16.1.102:6060/api/v1/crud",
-            data:[], url: 'http://172.16.1.102:6060/api/v1/getdata' , columns: [
+          crudURL :CrudData,
+            data:[], url: getData , columns: [
               { title: 'Name', field: 'APP_NAME' },
               { title: 'id', field: 'APP_ID', type: 'numeric' },
               { title: 'DESC', field: 'APP_DESC' },

@@ -12,8 +12,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
-import img from './img/ze.PNG';
-import  './signin.css'
+import image from '../../assets/img/img_1.jpg';
+import  './signin.css';
+import {Authenticate} from "../../Data/Data";
+
 
 
 
@@ -37,13 +39,17 @@ const useStyles = makeStyles((theme) => ({
 
     },
     image: {
-        backgroundImage:  `url(${img})`,
+        backgroundImage:  `url(${image})`,
         backgroundRepeat: 'no-repeat',
         backgroundColor:
         theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        filter: 'blur(0.10rem)',
+       
+        // filter: 'blur(0.10rem)',
+        
+        backgroundPosition:'center center',
+    
+
     },
     paper: {
         marginTop: theme.spacing(8),
@@ -66,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
 
  function SignInSide(props) {
      const container = {
-         url:"http://172.16.1.102:7070/learnapi/v1/authenticate" ,
+         url:Authenticate ,
          redirect:'/loginpass',
          backgroundColor:'whit'
 

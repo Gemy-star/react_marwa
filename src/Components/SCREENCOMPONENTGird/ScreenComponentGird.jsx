@@ -3,6 +3,8 @@ import MaterialTable from 'material-table';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
 import PathComponent from "../PathComponent/PathComponent";
+import ChromeReaderMode from "@material-ui/icons/ChromeReaderMode";
+import {CrudData} from "../../Data/Data";
 
 const ScreenComponentGird = (props) => {
     debugger
@@ -26,8 +28,8 @@ const ScreenComponentGird = (props) => {
             data={props.data}
             actions={[
                 {
-                    icon: 'save',
-                    tooltip: 'Save User',
+                    icon: ChromeReaderMode,
+                    tooltip: 'show details',
                     onClick: (event, rowData) => {
                         let state =  {id:rowData.SCREEN_ID }
                         props.history.push('/components', state);
@@ -40,7 +42,7 @@ const ScreenComponentGird = (props) => {
                         setTimeout(() => {
                             axios({
                                 method: 'post',
-                                url:'http://172.16.1.102:6060/api/v1/crud',
+                                url:CrudData,
                                 data:{
                                     fun_name:"PRO_INSERT_DOC_SCREENS",
                                     param_name:['P_SCREEN_NAME_A' ,'P_SCREEN_NAME_E' , 'P_MOD_ID' , 'P_SCREEN_DESC'],
@@ -67,7 +69,7 @@ const ScreenComponentGird = (props) => {
                             // console.log(newData.MOD_NAME,oldData.proj_id,newData.MODULE_DESC,oldData.MOD_ID);
                             axios({
                                 method: 'post',
-                                url:'http://172.16.1.102:6060/api/v1/crud',
+                                url:CrudData,
                                 data:{
                                     fun_name:"PRO_UPDATE_DOC_SCREENS",
                                     param_name:["P_SCREEN_ID" , 'P_SCREEN_NAME_A','P_SCREEN_NAME_E' , 'P_MOD_ID','P_SCREEN_DESC'],
@@ -95,7 +97,7 @@ const ScreenComponentGird = (props) => {
                         setTimeout(() => {
                             axios({
                                 method: 'post',
-                                url:'http://172.16.1.102:6060/api/v1/crud',
+                                url:CrudData,
                                 data:{
                                     fun_name:"PRO_DELETE_DOC_SCREENS",
                                     param_name:['P_SCREEN_ID'],

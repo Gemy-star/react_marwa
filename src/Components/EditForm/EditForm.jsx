@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
+import {CrudData} from "../../Data/Data";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +46,7 @@ export default function EditForm(props) {
   const classes = useStyles();
   const [app_name, setAppName] = useState(props.app.APP_NAME);
   const [app_desc, setAppDesc] = useState(props.app.APP_DESC);
-  const [url, setUrl] = useState("http://172.16.1.102:6060/api/v1/crud");
+  const [url, setUrl] = useState(CrudData);
 
     const [PROJ, setPROJ] = useState( sessionStorage.getItem("pro") );
     const [y, setPROJ_ID] = useState( sessionStorage.getItem("APP_ID") );

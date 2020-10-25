@@ -14,7 +14,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import { withRouter } from "react-router";
-
+import SuccessAlert from '../Alert/SuccessAlert';
+import { useAlert } from 'react-alert';
+import {CrudData} from "../../Data/Data";
 
 function Copyright() {
   return (
@@ -59,19 +61,18 @@ const useStyles = makeStyles((theme) => ({
   const classes = useStyles();
   const [app_name, setAppName] = useState("");
   const [app_desc, setAppDesc] = useState("");
-  const [url, setUrl] = useState("http://172.16.1.102:6060/api/v1/crud");
+  const [url, setUrl] = useState(CrudData);
   const [data, setData] = useState("");
   const [PROJ_ID, setPROJ_ID] = useState( sessionStorage.getItem("APP_ID") );
 
   const [currentPage, currentPage1] =useState( props.currentPage);
-const handClose = (event) => {
-  event.preventDefault();
-  //props.history.push('/')
-}
+  const alert = useAlert()
 
   const  handlesubmit = (event) => {
      // event.preventDefault();
-      debugger
+
+
+
       if (currentPage === "apps") {
           axios({
               method: 'POST',
@@ -84,8 +85,11 @@ const handClose = (event) => {
           })
               .then(response => {
 
+                 // setTimeout(()=>{alert.show('Oh look, an alert!')},3000).then(window.location.reload());
+                  //window.location.reload();
               })
               .catch(error => console.error('timeout exceeded'))  ;
+
       }
       else {
           axios({
@@ -101,9 +105,12 @@ const handClose = (event) => {
                   console.log(response.data)
                   //setData(response.data )
                   //props.history.push('/')
-                  // window.location.reload()
+                  // alert.show('Oh look, an alert!');
+                  //setTimeout(()=>{alert.show('Oh look, an alert!')},5000);
+                  //window.location.reload();
               })
               .catch(error => console.error('timeout exceeded'))  ;
+
       }
   };
 
@@ -127,7 +134,7 @@ const handClose = (event) => {
                 required
                 fullWidth
                 id="app_name"
-                label="Application Name"
+                label="Name"
                 name="app_name"
                 type="text"
                 autoFocus           
@@ -161,8 +168,8 @@ const handClose = (event) => {
            Add
           </Button>
           <Button
-          onClick = {(event) => {handClose(event)}}
-            type="submit" 
+            onClick = {() => {props.handleclose()}}
+            type="button"
             variant="contained"
             color="danger"
             className={classes.submit}

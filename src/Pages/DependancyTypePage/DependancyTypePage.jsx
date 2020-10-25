@@ -4,6 +4,8 @@ import { withRouter } from "react-router-dom";
 import MenuAppBar from '../../Components/AppBar/AppBar';
 import DependancyTypeGRID from "../../Components/DependancyTypeGRID/DependancyTypeGRID";
 import BreadCrumbComp from "../../Components/BreadCrumbComp/BreadCrumbComp";
+import {getData} from "../../Data/Data";
+import NavNew from "../../Components/Drawer/NavNew";
 
 const route = [{routeName: 'Dependancy Type' , routePath:'/DependancyTypePage'}];
 
@@ -12,7 +14,7 @@ class DependancyTypePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            url:'http://172.16.1.102:6060/api/v1/getdata',
+            url:getData,
             data:[],
 
             columns: [
@@ -45,9 +47,9 @@ class DependancyTypePage extends Component {
             <div>
                 <div className = "row">
                     <div className="col-12">
+                        <NavNew  routes = {route}/>
                         {/*<MenuAppBar title='DEP TYPE'/>*/}
                         <br/>
-                        <BreadCrumbComp routes = {route}/>
                         <br/>
                     </div>
                 </div>

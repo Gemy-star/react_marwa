@@ -1,16 +1,14 @@
 import React , {Component} from 'react';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
-import MenuAppBar from '../../Components/AppBar/AppBar';
-import ReturnTypeGrid from "../../Components/ReturnTypeGrid/ReturnTypeGrid";
+import CompType from "../../Components/CompType/CompType";
 import BreadCrumbComp from "../../Components/BreadCrumbComp/BreadCrumbComp";
 import {getData} from "../../Data/Data";
 import NavNew from "../../Components/Drawer/NavNew";
+const route = [{routeName: 'Comp Type' , routePath:'/CompType'}];
 
-const route = [{routeName: 'Return Type' , routePath:'/ReturnTypePage'}];
 
-
-class ReturnTypePage extends Component {
+class CompTypePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,9 +16,9 @@ class ReturnTypePage extends Component {
             data:[],
 
             columns: [
-                { title: 'NAME', field: 'NAME' },
+                { title: 'COMP_TYPE_NAME', field: 'COMP_TYPE_NAME' },
             ],
-            title:'RETURN TYPE '
+            title:'COMP_TYPE_NAME '
 
         }
     }
@@ -30,7 +28,7 @@ class ReturnTypePage extends Component {
             method: 'post',
             url:this.state.url,
             data:{
-                fun_name:"FU_DOC_PARAM_RET_TYPES",
+                fun_name:"FU_DOC_COMPONENT_TYPES",
                 param_name:[],
                 param_value:[]
             }
@@ -47,7 +45,7 @@ class ReturnTypePage extends Component {
             <div>
                 <div className = "row">
                     <div className="col-12">
-                        <NavNew  routes = {route}/>
+                        <NavNew  routes = {route} />
                         {/*<MenuAppBar title='DEP TYPE'/>*/}
                         <br/>
                         <br/>
@@ -55,7 +53,7 @@ class ReturnTypePage extends Component {
                 </div>
                 <div className = "row">
                     <div className="col-12">
-                        <ReturnTypeGrid data = {this.state.data} columns = {this.state.columns} title = {this.state.title} />
+                        <CompType data = {this.state.data} columns = {this.state.columns} title = {this.state.title} />
                     </div>
                 </div>
             </div>
@@ -64,4 +62,4 @@ class ReturnTypePage extends Component {
 
 }
 
-export default withRouter( ReturnTypePage);
+export default withRouter( CompTypePage);

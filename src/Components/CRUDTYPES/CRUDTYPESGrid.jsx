@@ -2,6 +2,7 @@ import React from 'react';
 import MaterialTable from 'material-table';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
+import {CrudData} from "../../Data/Data";
 
 const CRUDTYPESGrid = (props) => {
     debugger
@@ -34,7 +35,7 @@ const CRUDTYPESGrid = (props) => {
                         setTimeout(() => {
                             axios({
                                 method: 'post',
-                                url:'http://172.16.1.102:6060/api/v1/crud',
+                                url:CrudData,
                                 data:{
                                     fun_name:"PRO_INSERT_DOC_CRUD_TYPES",
                                     param_name:['P_CRUD_TYPE_NAME'],
@@ -61,7 +62,7 @@ const CRUDTYPESGrid = (props) => {
                             // console.log(newData.MOD_NAME,oldData.proj_id,newData.MODULE_DESC,oldData.MOD_ID);
                             axios({
                                 method: 'post',
-                                url:'http://172.16.1.102:6060/api/v1/crud',
+                                url:CrudData,
                                 data:{
                                     fun_name:"PRO_UPDATE_DOC_CRUD_TYPES",
                                     param_name:["P_CRUD_TYPE_ID" , 'P_CRUD_TYPE_NAME'],
@@ -89,7 +90,7 @@ const CRUDTYPESGrid = (props) => {
                         setTimeout(() => {
                             axios({
                                 method: 'post',
-                                url:'http://172.16.1.102:6060/api/v1/crud',
+                                url:CrudData,
                                 data:{
                                     fun_name:"PRO_DELETE_DOC_CRUD_TYPES",
                                     param_name:['P_CRUD_TYPE_ID'],

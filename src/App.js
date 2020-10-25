@@ -16,26 +16,21 @@ import ComponentPage from "./Pages/ComponentPage/ComponentPage";
 import CRUDTYPES from "./Pages/CrudTypePage/CRUDTYPES";
 import  DependancyTypePage from "./Pages/DependancyTypePage/DependancyTypePage";
 import  ReturnTypePage from "./Pages/ReturnTypePage/ReturnTypePage";
-
-
+import GemyAndZeinab from './Pages/GemyAndZeinab/GemyAndZeinab';
+import CompTypePage from './Pages/CompTypePage/CompTypePage';
+import TreeComp from './Components/TreeTable/TreeTable';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user_id : sessionStorage.getItem("USER_ID")
+ 
 
-    }
-    if(this.state.user_id) {
-      this.props.history.push('/')
-    }else {
-      this.props.history.push('/login')
-    }
   }
 
   render() {
     return (
         <div >
           <Switch>
+          <Route exact  path='/gemyandzeze' component={() => <GemyAndZeinab/>} />
             <Route  path='/components' component={() =><ComponentPage/>} />
             <Route  path='/screens' component={() => <Screens/>} />
             <Route  path='/login' component={() => <LoginStepOnePage/>} />
@@ -48,6 +43,8 @@ class App extends Component {
             <Route exact path='/DependancyTypePage' component={() => <DependancyTypePage/> }/>
             <Route exact path='/ReturnTypePage' component={() => <ReturnTypePage/> }/>
             <Route exact path='/Projects' component={() => <Project/> }/>
+            <Route exact path='/CompTypePage' component={() => <CompTypePage/> }/>
+            <Route exact path='/CollapsibleTable' component={() => <TreeComp/> }/>
 
           </Switch>
         </div>

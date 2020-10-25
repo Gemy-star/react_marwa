@@ -5,6 +5,8 @@ import { withRouter } from "react-router-dom";
 import MenuAppBar from '../../Components/AppBar/AppBar';
 import BreadCrumbComp from "../../Components/BreadCrumbComp/BreadCrumbComp";
 import PathComponent from "../../Components/PathComponent/PathComponent";
+import {getData} from "../../Data/Data";
+import NavNew from "../../Components/Drawer/NavNew";
 
 
 
@@ -16,7 +18,7 @@ class ModulePage extends Component {
     constructor(props) {
         super(props);
          this.state = {
-             url:'http://172.16.1.102:6060/api/v1/getdata',
+             url:getData,
              data:[],
             // proj_ID : this.props.location.state.id ,
              proj_ID :  sessionStorage.getItem("PROJ_ID"),
@@ -50,9 +52,9 @@ class ModulePage extends Component {
             <div>
                 <div className = "row">
                     <div className="col-12">
+                        <NavNew  routes = {route}/>
                 {/*<MenuAppBar title='Modules'/>*/}
                 <br/>
-                <BreadCrumbComp routes = {route} />
                 <br/>
                 {/*<h1>{path}</h1>*/}
                 {/*<PathComponent Path={path}/>*/}

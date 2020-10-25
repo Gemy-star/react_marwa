@@ -6,6 +6,7 @@ import MediaCard from '../../Components/CardDocument/CardDocument';
 import Grid from '@material-ui/core/Grid';
 import { withRouter } from "react-router-dom";
 import MenuAppBar from '../../Components/AppBar/AppBar'
+import {CrudData, getData} from "../../Data/Data";
 
 
 class Pagefor extends Component {
@@ -14,8 +15,8 @@ class Pagefor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          crudURL :"http://172.16.1.102:6060/api/v1/crud",
-            data:[], url: 'http://172.16.1.102:6060/api/v1/getdata' ,
+          crudURL :CrudData,
+            data:[], url: getData ,
           status : ""
 
         }

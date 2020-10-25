@@ -6,6 +6,8 @@ import MenuAppBar from '../../Components/AppBar/AppBar';
 import ScreenGird from "../../Components/ScreenGird/ScreenGird";
 import BreadCrumbComp from "../../Components/BreadCrumbComp/BreadCrumbComp";
 import PathComponent from "../../Components/PathComponent/PathComponent";
+import {getData} from "../../Data/Data";
+import NavNew from "../../Components/Drawer/NavNew";
 
 const route = [{routeName: 'Applications' , routePath:'/'} , {routeName: 'Projects' , routePath:'/ProjectsPage'},{ routeName: 'Modules' , routePath:'/module'},{ routeName: 'Screen' , routePath:'/screens'}];
 
@@ -18,7 +20,7 @@ class Screens extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            url:'http://172.16.1.102:6060/api/v1/getdata',
+            url:getData,
             data:[],
             // MOD_ID : this.props.location.state.id ,
             MOD_ID: sessionStorage.getItem("ModuleId"),
@@ -55,9 +57,9 @@ class Screens extends Component {
             <div>
                 <div className = "row">
                     <div className="col-12">
+                        <NavNew routes = {route}/>
                         {/*<MenuAppBar title='Screens'/>*/}
                         <br/>
-                        <BreadCrumbComp routes = {route} />
                         <br/>
 
                     </div>

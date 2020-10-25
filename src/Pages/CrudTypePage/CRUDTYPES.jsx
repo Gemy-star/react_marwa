@@ -4,6 +4,8 @@ import { withRouter } from "react-router-dom";
 import MenuAppBar from '../../Components/AppBar/AppBar';
 import CRUDTYPESGrid from "../../Components/CRUDTYPES/CRUDTYPESGrid";
 import BreadCrumbComp from "../../Components/BreadCrumbComp/BreadCrumbComp";
+import {getData} from "../../Data/Data";
+import NavNew from "../../Components/Drawer/NavNew";
 
 const route = [{routeName: 'CRUD TYPES' , routePath:'/CRUDTYPES'} ];
 
@@ -12,7 +14,7 @@ class CRUDTYPES extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            url:'http://172.16.1.102:6060/api/v1/getdata',
+            url:getData,
             data:[],
 
             columns: [
@@ -35,7 +37,7 @@ class CRUDTYPES extends Component {
         })
             .then(response => {
                 this.setState({data: response.data.Table})
-                console.log(response.data.Table)
+                console.log(response.data)
 
             })
             .catch(error => console.error('timeout exceeded'))
@@ -45,9 +47,9 @@ class CRUDTYPES extends Component {
             <div>
                 <div className = "row">
                     <div className="col-12">
+                        <NavNew routes = {route} />
                         {/*<MenuAppBar title='CRUD TYPES'/>*/}
                         <br/>
-                        <BreadCrumbComp routes = {route}/>
                         <br/>
                     </div>
                 </div>

@@ -45,7 +45,7 @@ export default function MenuAppBar(props) {
   };
 
   return (
-    <div className={classes.root}>
+    <div className= "container">
       <FormGroup>
         <FormControlLabel
           control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}

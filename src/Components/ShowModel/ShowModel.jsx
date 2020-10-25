@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Fab from '@material-ui/core/Fab';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import ChromeReaderMode from '@material-ui/icons/ChromeReaderMode';
 import { Card, CardTitle, CardText, Row, Col } from 'reactstrap';
 
 
@@ -61,7 +61,7 @@ export default function ShowModel(props) {
     return (
         <div>
             <Fab  aria-label="like" >
-        <FavoriteIcon onClick= {handleOpen} />
+        <ChromeReaderMode onClick= {handleOpen} />
       </Fab>
             <Modal
                 open={open}

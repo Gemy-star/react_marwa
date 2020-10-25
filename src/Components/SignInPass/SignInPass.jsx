@@ -13,6 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
 import img from './img/ze.PNG';
+import {Authenticate} from "../../Data/Data";
 
 
 function Copyright() {
@@ -65,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 function SignInPass (props) {
 
     const container = {
-        url:"http://172.16.1.102:7070/learnapi/v1/authenticate" ,
+        url:Authenticate ,
         redirect:'/'
     }
     const [password , setPassword] = useState("");

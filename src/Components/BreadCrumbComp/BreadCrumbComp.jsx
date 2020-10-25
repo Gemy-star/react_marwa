@@ -90,6 +90,8 @@ export default function BreadCrumbComp(props) {
                             <NavLink className={classes.navclass}  to="/DependancyTypePage" >DEPENDANCY_TYPES</NavLink>
                             <NavLink className={classes.navclass} to="/ReturnTypePage" >Return_Type</NavLink>
 
+                            <NavLink className={classes.navclass} to="/CompTypePage" >Comp_Type_Page</NavLink>
+
                         {auth && (
                             <div>
                                 <IconButton
