@@ -31,9 +31,10 @@ const ScreenComponentGird = (props) => {
                     icon: ChromeReaderMode,
                     tooltip: 'show details',
                     onClick: (event, rowData) => {
-                        let state =  {id:rowData.SCREEN_ID }
-                        props.history.push('/components', state);
-
+                        let state =  {id:rowData.SCREEN_ID ,name:rowData.SCREEN_NAME_A}
+                        props.history.push('/TreeComp', state);
+                        sessionStorage.setItem("Component_ID",state.id)
+                        sessionStorage.setItem("Component_Name",state.name)
                     }
                 },]}
             editable={{

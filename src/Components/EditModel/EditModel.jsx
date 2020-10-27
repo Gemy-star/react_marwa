@@ -56,8 +56,8 @@ export default function EditModel(props) {
 
   return (
     <div>
-         <Fab color="info" aria-label="add" onClick={handleOpen}>
-  <EditIcon  />
+      <Fab color="info" aria-label="add" onClick={handleOpen}>
+     <EditIcon  />
 </Fab>
       <Modal
         open={open}

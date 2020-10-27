@@ -155,6 +155,8 @@ export default function NavNew(props) {
         <NavLink className={classes.navclass} to="/CRUDTYPES" >CRUD TYPES <br/> </NavLink>
          <NavLink className={classes.navclass}  to="/DependancyTypePage" >DEPENDANCY TYPES <br/></NavLink>
          <NavLink className={classes.navclass} to="/ReturnTypePage" >Return Type <br/></NavLink>
+            <NavLink className={classes.navclass} to="/CompTypePage" >CompTypePage <br/></NavLink>
+
         </List>
             </Drawer>
     </div>
