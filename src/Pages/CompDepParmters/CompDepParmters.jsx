@@ -25,7 +25,8 @@ class CompDepParmterss extends Component {
             P_DEP_ID: sessionStorage.getItem("P_DEP_ID"),
             columns: [
                 { title: 'PARAM_NAME', field: 'PARAM_NAME' },
-                { title: 'PARAM_TYPE', field: 'PARAM_TYPE' },
+                { title: 'PARAM_TYPE', field: 'PARAM_TYPE_NAME' },
+                { title: 'PARAM_SIZE', field: 'PARAM_SIZE' },
             ],
             title:'PARAMETERS'
 

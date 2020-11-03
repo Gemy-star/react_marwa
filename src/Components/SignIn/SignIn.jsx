@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { withRouter } from "react-router-dom";
 import image from '../../assets/img/img_1.jpg';
-import  './signin.css';
+//import  './signin.css';
 import {Authenticate} from "../../Data/Data";
 
 

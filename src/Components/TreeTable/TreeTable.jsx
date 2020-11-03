@@ -12,10 +12,50 @@ import PathComponent from "../PathComponent/PathComponent";
 import EditModel from "../EditModel/EditModel";
 import CardActions from "@material-ui/core/CardActions";
 import EditIcon from "@material-ui/icons/Edit";
-import Fab from "@material-ui/core/Fab";
+import DetailsIcon from '@material-ui/icons/Details';
+import { withStyles,makeStyles } from "@material-ui/core/styles";
+
 import Modal from "@material-ui/core/Modal";
 import EditForm from "../EditForm/EditForm";
 
+
+
+// const useStyles = makeStyles((theme) =>({
+//     root: {
+//         '&:nth-of-type(odd)': {
+//             backgroundColor: theme.palette.action.hover,
+//         },
+//     },
+//     toolbar: {
+//         backgroundColor: "white"
+//     },
+//     caption: {
+//         color: "red",
+//         fontSize: "20px"
+//     },
+//     selectIcon: {
+//         color: "green"
+//     },
+//     select: {
+//         color: "black",
+//         fontSize: "20px"
+//     },
+//     actions: {
+//         color: "blue"
+//     },
+//     table: {
+//         minWidth: 700,
+//         StyledTableRow,
+//     },
+// }));
+const useStyles = () => ({
+    fab: {
+        position: 'fixed',
+        //bottom: theme.spacing(2),
+        //right: theme.spacing(2),
+        color: "black",
+    },
+});
 const route = [{routeName: 'Applications' , routePath:'/'} ,
     {routeName: 'Projects' , routePath:'/ProjectsPage'},
     { routeName: 'Modules' , routePath:'/module'},{ routeName: 'Screen' , routePath:'/screens'},
@@ -28,7 +68,11 @@ const  path = [{PathName: "Application", value:sessionStorage.getItem("APP_Name"
 
 // getModalStyle is not a pure function, we roll the style only on the first render
 
+
 class TreeComp extends Component {
+
+    classes = ()=> useStyles();
+
     constructor(props) {
         super(props);
         this.state = {
@@ -36,11 +80,14 @@ class TreeComp extends Component {
             data:[],
             Component_ID: sessionStorage.getItem("Component_ID"),
             open:false,
+            Editdata: {},
         }
     }
-     handleOpen = () => {
-        this.setState({open:true});
-        alert(1)
+    handleOpen = (x) => {
+        //this.setState({open:true});
+        console.log(x);
+        this.setState({Editdata:x.toString()})
+        console.log(this.state.Editdata);
     };
 
      handleClose = () => {
@@ -48,7 +95,7 @@ class TreeComp extends Component {
     };
 
      body = (
-         <EditForm currentPage="TreeTable"  /*app ={this.state.data[]} handleEdit = {props.onClick} onclose={handleClose}*//>
+         <EditForm currentPage="TreeTable"  /*data ={this.state.data.} handleEdit = {props.onClick} onclose={handleClose}*//>
         )
     componentDidMount(){
         axios({
@@ -66,8 +113,9 @@ class TreeComp extends Component {
             .catch(error => console.error('timeout exceeded'))
 
     }
+
     render() {
-        console.log(this.state.data)
+       // const { classes } =useStyles() ;
         // Donot return
         // Parameters
         return (
@@ -76,7 +124,8 @@ class TreeComp extends Component {
                 <br/>
                 <br/>
                 <br/>
-                <PathComponent Path={path}/>
+
+                <PathComponent  Path={path}/>
                 <div className = "row">
                     <div className="col-12">
                         <NavNew routes = {route}/>
@@ -93,30 +142,36 @@ class TreeComp extends Component {
                             actions={[
                                 {
                                     icon: EditIcon,
-                                    tooltip: 'Save User',
-                                    onClick: (event, rowData) => alert("You saved " + rowData.name)
+                                    iconProps: { style: { fontSize: "20px", color: "#0c70ca"} },
+                                    tooltip: 'edit',
+                                    onClick: (event, rowData) => {
+                                        this.handleOpen(rowData);
+                                    }
                                 },
                                 rowData => ({
-                                    icon: 'save',
+                                    icon: "R",
                                     tooltip: 'CompDepReturn',
+                                    iconProps: { style: { fontSize: "20px", color: "#0c70c4" } },
                                     onClick: (event, rowData) => {
                                         let state =  {id:rowData.DEP_ID, name:rowData.DEP_NAME}
                                         this.props.history.push('/CompDepReturn', state.id);
                                         sessionStorage.setItem("P_DEP_ID",state.id)
                                         sessionStorage.setItem("P_DEP_NAME",state.name)
                                     },
-                                    disabled: rowData.RETURN_FLAG === 'Donot return'
+                                    hidden: rowData.RETURN_FLAG === 'Donot return'
                                 }),
                                 rowData => ({
-                                    icon: 'save',
+                                    icon: "P" ,
                                     tooltip: 'CompDepParmters',
+                                    iconProps: { style: { fontSize: "20px", color: "#0c70ca" } },
                                     onClick: (event, rowData) => {
+                                        alert(rowData.DEP_ID)
                                         let state =  {id:rowData.DEP_ID, name:rowData.DEP_NAME}
-                                        this.props.history.push('/CompDepParmters', state.id);
+                                        this.props.history.push('/dependanciesparmterspage', state.id);
                                         sessionStorage.setItem("P_DEP_ID",state.id)
                                         sessionStorage.setItem("P_DEP_NAME",state.name)
                                     },
-                                    disabled: rowData.PARAMETER_FLAG === 'Donot Parameters'
+                                    hidden: rowData.PARAMETER_FLAG === 'Donot Parameters'
                                 })
                             ]}
                             columns={[
@@ -127,9 +182,17 @@ class TreeComp extends Component {
                                 { title: 'PARAMETER_FLAG', field: 'PARAMETER_FLAG' },
                             ]}
                             parentChildData={
-
                                 (row, rows) => rows.find(a => a.DEP_ID === row.DEP_DEP_ID)
                             }
+                            options={{
+                                // actionsCellStyle: {
+                                //     backgroundColor: "#cac1a7",
+                                //     color: "#e9ecef"
+                                // },
+
+                                headerStyle: { backgroundColor: "black", color: "white" }
+                            }}
+
                             // options={{
                             //     selection: true,
                             // }}
@@ -150,5 +213,5 @@ class TreeComp extends Component {
     }
 
 }
-export default withRouter( TreeComp);
+export default withRouter(TreeComp);
 

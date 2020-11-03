@@ -24,9 +24,15 @@ const ProjectsPage = props =>  {
      {/*<MenuAppBar title='Application/Projects'/>*/}
      <br/>
      <br/>
+            <br/>
+            <br/>
+     <br/>
    <PathComponent Path = {Path} proj_id={proj_id}/>
      <br/>
-       <Project proj_id={proj_id}/>
+            <br/>
+
+            <hr/>
+            <Project proj_id={proj_id}/>
     
     </div>)
 }

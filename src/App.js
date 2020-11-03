@@ -2,6 +2,10 @@ import React , {Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'fontsource-roboto';
 import './App.css';
+import 'primereact/resources/themes/saga-blue/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+import 'primeflex/primeflex.css';
 import {Switch , Route } from 'react-router-dom';
 import LoginStepOnePage from "./Pages/LoginStepOne/LoginStepOnePage";
 import LoginStepTwoPage from "./Pages/LoginStepTwo/LoginStepTwoPage";
@@ -19,10 +23,10 @@ import  ReturnTypePage from "./Pages/ReturnTypePage/ReturnTypePage";
 import GemyAndZeinab from './Pages/GemyAndZeinab/GemyAndZeinab';
 import CompTypePage from './Pages/CompTypePage/CompTypePage';
 import TreeComp from './Components/TreeTable/TreeTable';
-
-import CompDepParmters from './Pages/CompDepParmters/CompDepParmters';
+import TreeTablepage from './Pages/TreeTablePage/TreeTablePage';
+import DependanciesParmtersPage from './Pages/DependanciesParmters/DependanciesParmtersPage';
 import CompDepReturn from './Pages/CompDepReturn/CompDepReturn';
-
+import BasicTreeData from './Components/EditableTreeTable/EditableTreeTable'
 class App extends Component {
   constructor(props) {
     super(props);
@@ -47,9 +51,10 @@ class App extends Component {
             <Route exact path='/Projects' component={() => <Project/> }/>
             <Route exact path='/CompTypePage' component={() => <CompTypePage/> }/>
             <Route exact path='/TreeComp' component={() => <TreeComp/> }/>
-
-            <Route exact path='/CompDepParmters' component={() => <CompDepParmters/> }/>
+            <Route exact path='/dependanciesparmterspage' component={() => <DependanciesParmtersPage/> }/>
             <Route exact path='/CompDepReturn' component={() => <CompDepReturn/> }/>
+            <Route exact path='/TreeTablepage' component={() => <TreeTablepage/> }/>
+            <Route exact path='/BasicTreeData' component={() => <BasicTreeData/> }/>
 
           </Switch>
         </div>

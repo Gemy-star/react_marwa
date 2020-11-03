@@ -126,8 +126,11 @@ export default function BreadCrumbComp(props) {
                             </div>
                         )}
                     </Toolbar>
+
                 </AppBar>
+
             </div>
+
         </div>
     );
 }

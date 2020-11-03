@@ -59,6 +59,9 @@ class ModulePage extends Component {
                 {/*<h1>{path}</h1>*/}
                 {/*<PathComponent Path={path}/>*/}
                         <br/>
+                        <br/>
+                        <br/>
+                        <hr/>
                     </div>
                     </div>
                     <div className = "row">

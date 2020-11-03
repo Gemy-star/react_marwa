@@ -31,10 +31,11 @@ const ScreenComponentGird = (props) => {
                     icon: ChromeReaderMode,
                     tooltip: 'show details',
                     onClick: (event, rowData) => {
-                        let state =  {id:rowData.SCREEN_ID ,name:rowData.SCREEN_NAME_A}
-                        props.history.push('/TreeComp', state);
-                        sessionStorage.setItem("Component_ID",state.id)
-                        sessionStorage.setItem("Component_Name",state.name)
+                        let state =  {id:rowData.COMP_ID ,name:rowData.COMP_NAME}
+                        props.history.push('/TreeTablepage', state);
+                        console.log(rowData.COMP_ID)
+                        sessionStorage.setItem("Component_ID",rowData.COMP_ID)
+                        sessionStorage.setItem("Component_Name",rowData.COMP_NAME)
                     }
                 },]}
             editable={{
@@ -45,9 +46,9 @@ const ScreenComponentGird = (props) => {
                                 method: 'post',
                                 url:CrudData,
                                 data:{
-                                    fun_name:"PRO_INSERT_DOC_SCREENS",
-                                    param_name:['P_SCREEN_NAME_A' ,'P_SCREEN_NAME_E' , 'P_MOD_ID' , 'P_SCREEN_DESC'],
-                                    param_value:[newData.SCREEN_NAME_A ,newData.SCREEN_NAME_E ,props.mod_id, newData.SCREEN_DESC]
+                                    fun_name:"PRO_INSERT_D_SCREEN_COMPONENT",
+                                    param_name:['P_COMP_NAME' ,'P_COMP_TYPE_ID' , 'P_COMP_DESC' , 'P_SCREEN_ID'],
+                                    param_value:[newData.COMP_NAME ,newData.COMP_TYPE_ID ,props.COMP_DESC, newData.SCREEN_DESC]
                                 }
                             })
                                 .then(response => {
@@ -72,9 +73,9 @@ const ScreenComponentGird = (props) => {
                                 method: 'post',
                                 url:CrudData,
                                 data:{
-                                    fun_name:"PRO_UPDATE_DOC_SCREENS",
-                                    param_name:["P_SCREEN_ID" , 'P_SCREEN_NAME_A','P_SCREEN_NAME_E' , 'P_MOD_ID','P_SCREEN_DESC'],
-                                    param_value:[newData.SCREEN_ID,newData.SCREEN_NAME_A,newData.SCREEN_NAME_E,oldData.MOD_ID , newData.SCREEN_DESC]
+                                    fun_name:"PRO_UPDATE_D_SCREEN_COMPONENT",
+                                    param_name:["P_COMP_ID" , 'P_COMP_NAME','P_COMP_TYPE_ID' , 'P_COMP_DESC','P_SCREEN_ID'],
+                                    param_value:[newData.COMP_ID,newData.COMP_NAME,newData.COMP_TYPE_ID,newData.COMP_DESC , oldData.SCREEN_ID]
                                 }
                             })
                                 .then(response => {
@@ -100,9 +101,9 @@ const ScreenComponentGird = (props) => {
                                 method: 'post',
                                 url:CrudData,
                                 data:{
-                                    fun_name:"PRO_DELETE_DOC_SCREENS",
-                                    param_name:['P_SCREEN_ID'],
-                                    param_value:[oldData.SCREEN_ID]
+                                    fun_name:"PRO_DELETE_D_SCREEN_COMPONENT",
+                                    param_name:['P_COMP_ID'],
+                                    param_value:[oldData.COMP_ID]
                                 }
                             })
                                 .then(response => {

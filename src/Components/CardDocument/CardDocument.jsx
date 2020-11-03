@@ -7,9 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Fab from '@material-ui/core/Fab';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditModel from '../EditModel/EditModel';
-import ShowModel from "../ShowModel/ShowModel";
-import EditIcon from "@material-ui/icons/Edit";
-
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 
 
 const useStyles = makeStyles({
@@ -30,7 +28,7 @@ export default function MediaCard(props) {
     <Card className={classes.root}>
       <CardActionArea>
         <CardContent >
-          <p gutterBottom variant="h5" component="h2" onClick={props.handelonclick} >
+          <p gutterBottom variant="h5" component="h2"  >
             {props.appName}
             
           </p>
@@ -47,8 +45,10 @@ export default function MediaCard(props) {
   <DeleteIcon onClick= {props.handledelete} />
 </Fab>
 
-<ShowModel app = {{APP_ID : props.appID , APP_NAME : props.appName , APP_DESC : props.appDesc}}/>
-
+{/*<ShowModel app = {{APP_ID : props.appID , APP_NAME : props.appName , APP_DESC : props.appDesc}}/>*/}
+          <Fab color="primary" aria-label="delete" >
+              <ArrowForwardIcon onClick={props.handelonclick} />
+          </Fab>
       </CardActions>
     </Card>
   );

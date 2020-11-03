@@ -61,7 +61,9 @@ class Screens extends Component {
                         {/*<MenuAppBar title='Screens'/>*/}
                         <br/>
                         <br/>
-
+                       <br/>
+                       <br/>
+                       <hr/>
                     </div>
                 </div>
                 <div className = "row">

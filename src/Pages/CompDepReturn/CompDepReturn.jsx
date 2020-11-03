@@ -29,7 +29,9 @@ class CompDepReturnn extends Component {
             P_DEP_ID: sessionStorage.getItem("P_DEP_ID"),
             columns: [
                 { title: 'RETURN_NAME', field: 'RETURN_NAME' },
-                { title: 'RETURN_TYPE', field: 'RETURN_TYPE' },
+                { title: 'RETURN_TYPE', field: 'RETURN_TYPE_NAME' },
+                { title: 'RETURN_SIZE', field: 'RETURN_SIZE' },
+
 
             ],
             title:'RETURN'
