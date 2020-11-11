@@ -19,16 +19,6 @@ const CRUDTYPESGrid = (props) => {
             title= {props.title}
             columns={props.columns}
             data={props.data}
-          /*  actions={[
-                {
-                    icon: 'save',
-                    tooltip: 'Save User',
-                    onClick: (event, rowData) => {
-                        let state =  {id:rowData.SCREEN_ID }
-                        props.history.push('/components', state);
-
-                    }
-                },]}*/
             editable={{
                 onRowAdd: (newData) =>
                     new Promise((resolve) => {
@@ -43,7 +33,6 @@ const CRUDTYPESGrid = (props) => {
                                 }
                             })
                                 .then(response => {
-                                    console.log(response.data)
 
                                 })
                                 .catch(error => console.error('timeout exceeded'))
@@ -59,7 +48,6 @@ const CRUDTYPESGrid = (props) => {
                 onRowUpdate: (newData, oldData) =>
                     new Promise((resolve) => {
                         setTimeout(() => {
-                            // console.log(newData.MOD_NAME,oldData.proj_id,newData.MODULE_DESC,oldData.MOD_ID);
                             axios({
                                 method: 'post',
                                 url:CrudData,
@@ -70,7 +58,6 @@ const CRUDTYPESGrid = (props) => {
                                 }
                             })
                                 .then(response => {
-                                    console.log(response.data)
 
                                 })
                                 .catch(error => console.error('timeout exceeded'))
@@ -98,7 +85,6 @@ const CRUDTYPESGrid = (props) => {
                                 }
                             })
                                 .then(response => {
-                                    console.log(response.data)
 
                                 })
                                 .catch(error => console.error('timeout exceeded'))

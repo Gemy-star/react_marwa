@@ -41,7 +41,6 @@ const CompDepReturn = (props) => {
 
                                     })
                                     .catch(error => console.error('timeout exceeded'))
-                                //window.location.reload(true)
                                 resolve();
                                 setState((prevState) => {
                                     const data = [...prevState.data];

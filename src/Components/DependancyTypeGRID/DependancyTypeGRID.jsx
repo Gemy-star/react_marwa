@@ -19,16 +19,6 @@ const DependancyTypeGRID = (props) => {
             title= {props.title}
             columns={props.columns}
             data={props.data}
-            /*  actions={[
-                  {
-                      icon: 'save',
-                      tooltip: 'Save User',
-                      onClick: (event, rowData) => {
-                          let state =  {id:rowData.SCREEN_ID }
-                          props.history.push('/components', state);
-
-                      }
-                  },]}*/
             editable={{
                 onRowAdd: (newData) =>
                     new Promise((resolve) => {

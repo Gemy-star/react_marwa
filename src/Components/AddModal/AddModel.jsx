@@ -4,7 +4,6 @@ import Modal from '@material-ui/core/Modal';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import AddForm from '../AddForm/form';
-import { useAlert } from 'react-alert';
 
 function rand() {
   return Math.round(Math.random() * 30) - 20;
@@ -36,7 +35,6 @@ export default function AddModal(props) {
 
 
   const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 

@@ -1,20 +1,11 @@
 import React, {Component} from 'react';
 import MaterialTable from "material-table";
 import axios from "axios";
-import BreadCrumbComp from "../BreadCrumbComp/BreadCrumbComp";
-import CRUDTYPESGrid from "../CRUDTYPES/CRUDTYPESGrid";
 import {withRouter} from "react-router-dom";
- import ChromeReaderMode from "@material-ui/icons/ChromeReaderMode";
 import {getData} from "../../Data/Data";
 import NavNew from "../Drawer/NavNew";
-import ScreenGird from "../ScreenGird/ScreenGird";
 import PathComponent from "../PathComponent/PathComponent";
-import EditModel from "../EditModel/EditModel";
-import CardActions from "@material-ui/core/CardActions";
 import EditIcon from "@material-ui/icons/Edit";
-import DetailsIcon from '@material-ui/icons/Details';
-import { withStyles,makeStyles } from "@material-ui/core/styles";
-
 import Modal from "@material-ui/core/Modal";
 import EditForm from "../EditForm/EditForm";
 
@@ -185,17 +176,10 @@ class TreeComp extends Component {
                                 (row, rows) => rows.find(a => a.DEP_ID === row.DEP_DEP_ID)
                             }
                             options={{
-                                // actionsCellStyle: {
-                                //     backgroundColor: "#cac1a7",
-                                //     color: "#e9ecef"
-                                // },
-
                                 headerStyle: { backgroundColor: "black", color: "white" }
                             }}
 
-                            // options={{
-                            //     selection: true,
-                            // }}
+
                         />
                     </div>
                 </div>

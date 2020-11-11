@@ -27,6 +27,7 @@ import TreeTablepage from './Pages/TreeTablePage/TreeTablePage';
 import DependanciesParmtersPage from './Pages/DependanciesParmters/DependanciesParmtersPage';
 import CompDepReturn from './Pages/CompDepReturn/CompDepReturn';
 import BasicTreeData from './Components/EditableTreeTable/EditableTreeTable'
+import DialogComponent from "./Components/DialogComponent/DialogComponent";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,7 +37,7 @@ class App extends Component {
     return (
         <div >
           <Switch>
-          <Route exact  path='/gemyandzeze' component={() => <GemyAndZeinab/>} />
+            <Route exact  path='/gemyandzeze' component={() => <GemyAndZeinab/>} />
             <Route  path='/components' component={() =><ComponentPage/>} />
             <Route  path='/screens' component={() => <Screens/>} />
             <Route  path='/login' component={() => <LoginStepOnePage/>} />
@@ -55,6 +56,7 @@ class App extends Component {
             <Route exact path='/CompDepReturn' component={() => <CompDepReturn/> }/>
             <Route exact path='/TreeTablepage' component={() => <TreeTablepage/> }/>
             <Route exact path='/BasicTreeData' component={() => <BasicTreeData/> }/>
+            <Route exact path='/editandadd' component={() => <DialogComponent/> }/>
 
           </Switch>
         </div>

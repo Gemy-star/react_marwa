@@ -50,7 +50,6 @@ const CompType = (props) => {
                 onRowUpdate: (newData, oldData) =>
                     new Promise((resolve) => {
                         setTimeout(() => {
-                            // console.log(newData.MOD_NAME,oldData.proj_id,newData.MODULE_DESC,oldData.MOD_ID);
                             axios({
                                 method: 'post',
                                 url:CrudData,

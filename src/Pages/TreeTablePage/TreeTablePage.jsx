@@ -4,6 +4,7 @@ import axios from 'axios';
 import {getData} from "../../Data/Data";
 import NavNew from "../../Components/Drawer/NavNew";
 import { withRouter } from "react-router-dom";
+import {Button} from "primereact/button";
 
 
 
@@ -50,6 +51,9 @@ const TreeTablepage =(props)=>
         },[]
 
     )
+  const  onHide = () => {
+        window.history.back();
+    }
 
 //console.log(combodata)
     return(
@@ -60,6 +64,12 @@ const TreeTablepage =(props)=>
             <br/>
             <hr/>
             <BasicTreeData combodata={window.marwa} com_crud = {crud_type} id={props.location.state.id} />
+            <br/>
+            <br/>
+            <br/>
+            <hr/>
+            <Button icon="pi pi-angle-double-left" onClick={() => onHide()}/>
+
         </div>
 
 

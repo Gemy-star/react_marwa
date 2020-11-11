@@ -2,8 +2,10 @@ import  React, {useState, useEffect } from 'react';
 import MaterialTable from 'material-table';
 import HighlightOffTwoToneIcon from '@material-ui/icons/HighlightOffTwoTone';
 import axios from "axios";
-import {getData} from "../../Data/Data";
-
+import {CrudData, getData} from "../../Data/Data";
+import AddIcon from '@material-ui/icons/Add';
+import BorderColorIcon from '@material-ui/icons/BorderColor';
+import { withRouter } from "react-router-dom";
 
 const BasicTreeData=(props)=>
 {
@@ -49,25 +51,25 @@ const BasicTreeData=(props)=>
     }
 
     useEffect(()=> {
-        const Com = async()=>
-        {
-            const payload = await axios({
-                method: 'post',
-                url: getData,
-                data: {
-                    fun_name: "FU_DOC_CRUD_TYPES",
-                    param_name: [],
-                    param_value: []
-                }
-            })
-            const result = payload.data.Table;
-            console.log(result);
+            const Com = async()=>
+            {
+                const payload = await axios({
+                    method: 'post',
+                    url: getData,
+                    data: {
+                        fun_name: "FU_DOC_CRUD_TYPES",
+                        param_name: [],
+                        param_value: []
+                    }
+                })
+                const result = payload.data.Table;
+                console.log(result);
 
-            setCom(result)
+                setCom(result)
 
-        }
+            }
 
-        Com();
+            Com();
 
 
             const Data = async()=>
@@ -92,7 +94,7 @@ const BasicTreeData=(props)=>
 
         },[]
     )
-     //console.log(combo,combo1)
+    //console.log(combo,combo1)
 
     return (
         <MaterialTable
@@ -101,26 +103,6 @@ const BasicTreeData=(props)=>
             columns={columns}
 
             editable={{
-                onRowAdd: newData =>
-                    new Promise((resolve, reject) => {
-                        setTimeout(() => {
-                            setData([...data, {id:axiosid,...newData,parentId:selectedRow.id}]);
-                            axiosid=axiosid+1
-                            setSelectedRow([null,null])
-                            resolve();
-                        }, 1000)
-                    }),
-                onRowUpdate: (newData, oldData) =>
-                    new Promise((resolve, reject) => {
-                        setTimeout(() => {
-                            const dataUpdate = [...data];
-                            const index = oldData.tableData.id;
-                            dataUpdate[index] = newData;
-                            setData([...dataUpdate]);
-
-                            resolve();
-                        }, 1000)
-                    }),
                 onRowDelete: oldData =>
                     new Promise((resolve, reject) => {
                         setTimeout(() => {
@@ -134,24 +116,28 @@ const BasicTreeData=(props)=>
                     }),
             }}
 
-                    actions=
-                {[
-                    rowData =>(
-                        {
-                            icon: HighlightOffTwoToneIcon,
-                            iconProps: { style: {  backgroundColor: "green" } },
+            actions={[
 
-                            //hidden:(selectedRow.parentId == undefined && clear == false)? false : true,
-                            hidden:rowData.id == selectedRow.id ? false : true,
-                            tooltip: 'clear selection',
-                            onClick: (event, rowData) => {setSelectedRow([null,null])}
+                {
+                    icon:() => <AddIcon/>,
+                    tooltip: 'Add',
+                    onClick: (event, rowData) => {
+                        let state = {...rowData,update:false}
+                        props.history.push('/editandadd',state)
+                    },
+                },
+                {
+                    icon:() => <BorderColorIcon/>,
+                    tooltip: 'Edit',
+                    onClick: (event, rowData) => {
+                     let state = {...rowData , update:true}
+                          props.history.push('/editandadd' ,state)
+                    },
+                },
 
-                        })
-                ]}
-            //handle expand-collapse events
-            //onTreeExpandChange={ro}
-            parentChildData = {
-                (row, rows) => rows.find(a => a.DEP_ID === row.DEP_DEP_ID)
+            ]}
+          parentChildData = {
+               (row, rows) => rows.find(a => a.DEP_ID === row.DEP_DEP_ID)
             }
 
             options=
@@ -165,9 +151,8 @@ const BasicTreeData=(props)=>
                     }),
                     actionsColumnIndex: -1,
                 }}
-            onRowClick={ (evt,a)=>{ handleOnrowclick(evt,a)}}
 
         />
     )
 }
-export default BasicTreeData;
+export default withRouter(BasicTreeData);

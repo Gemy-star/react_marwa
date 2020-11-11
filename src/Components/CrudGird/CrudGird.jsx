@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classNames from 'classnames';
 import axios from 'axios';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -13,6 +12,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { withRouter } from "react-router-dom";
 
 import './CrudGird.css';
+import {CrudData, getData} from "../../Data/Data";
 
  class CrudGird extends Component {
 
@@ -41,18 +41,17 @@ import './CrudGird.css';
             COMP_TYPE_VALUE : null,
         };
 
-       // this.productService = new ProductService();
 
     }
 
     componentDidMount() {
         axios({
             method: 'post',
-            url:'http://172.16.1.102:6060/api/v1/getdata',
+            url:getData,
             data:{
                 fun_name:"FU_DOC_SCREEN_COMPONENT2",
                 param_name:["P_SCREEN_ID"],
-                param_value:["3"]
+                param_value:[sessionStorage.getItem('Screen_Id')]
             }
 
         })
@@ -118,7 +117,7 @@ import './CrudGird.css';
         console.log(this.state.DOC_SCREEN_COMPONENT.COMP_NAME)
         axios({
             method: 'post',
-            url:'http://172.16.1.102:6060/api/v1/crud',
+            url:CrudData,
             data:{
                 fun_name:"PRO_INSERT_D_SCREEN_COMPONENT",
                 param_name:["P_COMP_NAME","P_COMP_TYPE_ID","P_COMP_DESC","P_SCREEN_ID"],
@@ -142,7 +141,7 @@ import './CrudGird.css';
 
         axios({
             method: 'post',
-            url:'http://172.16.1.102:6060/api/v1/crud',
+            url:CrudData,
             data:{
                 fun_name:"PRO_UPDATE_D_SCREEN_COMPONENT",
                 param_name:["P_COMP_ID","P_COMP_NAME","P_COMP_TYPE_ID","P_COMP_DESC","P_SCREEN_ID"],
@@ -164,7 +163,7 @@ import './CrudGird.css';
         });
         axios({
             method: 'post',
-            url:'http://172.16.1.102:6060/api/v1/crud',
+            url:CrudData,
             data:{
                 fun_name:"PRO_DELETE_D_SCREEN_COMPONENT",
                 param_name:["P_COMP_ID"],
@@ -267,7 +266,7 @@ import './CrudGird.css';
             <React.Fragment>
                 <Button icon="pi pi-pencil" className="p-button-rounded p-button-success p-mr-2" onClick={() => this.editDOC_SCREEN_COMPONENT(rowData)} />
                 <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => this.confirmDeleteDOC_SCREEN_COMPONENT(rowData)} />
-                <Button icon="pi pi-long-arrow-right" className="p-button-rounded p-button-primary" onClick={() => this.redirectPage(rowData)} />
+                <Button icon="pi pi-forward" className="p-button-rounded p-button-primary" onClick={() => this.redirectPage(rowData)} />
 
             </React.Fragment>
         );
