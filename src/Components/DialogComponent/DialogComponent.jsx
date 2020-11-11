@@ -47,7 +47,7 @@ class DialogComponent extends Component {
             method: 'post',
             url:getData,
             data:{
-                fun_name:"FU_DOC_COMPONENT_TYPES",
+                fun_name:"FU_DOC_CRUD_TYPES",
                 param_name:[],
                 param_value:[]
             }
@@ -148,7 +148,7 @@ class DialogComponent extends Component {
                         <Dropdown inputId="CrudType" value={this.state.selectedCrudName} options={this.state.CrudNames}
                                   onChange={(e) => {
                                       this.setState({selectedCrudName: e.value})
-                                  }} placeholder="Select CRUD TYPE NAME" optionLabel="COMP_TYPE_NAME" optionValue="COMP_TYPE_ID"/>
+                                  }} placeholder="Select CRUD TYPE NAME" optionLabel="CRUD_TYPE_NAME" optionValue="CRUD_TYPE_ID"/>
 
                     </div>
                     <div className="p-field p-col-12 p-md-6">
